@@ -1,2 +1,10 @@
-# Portfolio
-SNHU Projects
+Program Reflection – Essential Questions
+
+How do I interpret user needs and implement them into a program? How does creating “user stories” help with this?
+- Understanding user needs begins with viewing the project from the customer's perspective. It's important to focus on the problems they need solved, rather than just the features they request. Creating user stories helps to clarify those needs by presenting them in simple, goal-oriented language, such as “As a user, I want to…". This approach allowed me to translate general expectations into specific, actionable requirements during development. For instance, in the SNHU Travel project, user stories guided my focus towards functionality that enhanced the user’s booking experience, rather than merely completing technical tasks. By prioritizing and refining user stories throughout the sprints, I ensured that the program’s features aligned closely with real user goals.
+
+How do I approach developing programs? What Agile processes do I hope to incorporate into my future development work?
+- I view program development as an iterative and collaborative process that evolves through testing and feedback. My experience with Agile practices, particularly Scrum, has taught me to break significant goals into smaller, manageable increments that can be improved over time. In future projects, I will continue to use sprint planning, daily stand-ups, and retrospectives to stay organized and responsive to change. Continuous integration, adaptive planning, and regular feedback loops will help ensure the delivery of high-quality software that meets stakeholder needs, while also allowing for flexibility as those needs evolve.
+
+What does it mean to be a good team member in software development?
+- Being a good team member means contributing more than just code—it means communicating clearly, supporting others, and staying open to feedback. In an Agile team, collaboration and transparency are just as important as technical skills. A good teammate, by participating actively in discussions, helps remove obstacles for others, and respects different viewpoints. This active participation makes each member feel valued and integral to the team. It also means being accountable for your work and adaptable when priorities shift. The best development teams succeed because they trust one another, share ownership of outcomes, and continuously learn from each sprint.
