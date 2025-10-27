@@ -15,7 +15,7 @@
 *  3. Calculate investment growth without monthly deposits.
 *  4. Calculate investment growth with monthly deposits. 
 *  5. Display yearly balances and earned interest for both scenarios.
-*  6. Pause the program after displaying inputs (“Press any key to continue…”).
+*  6. Pause the program after displaying inputs (â€œPress any key to continueâ€¦â€).
 *  7. Allow the user to test different investment scenarios.
 *  8. Format monetary values to two decimal places.
 *****************************************************************************************************************/
