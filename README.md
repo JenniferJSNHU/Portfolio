@@ -6,7 +6,7 @@ I approach program development as an iterative and collaborative process that ev
 Being a good team member in software development means contributing more than just code—it involves clear communication, supporting others, and being open to feedback. In an Agile environment, collaboration and transparency are just as important as technical skills. A good teammate participates actively in discussions, helps remove obstacles for others, and respects diverse viewpoints. This active participation makes each member feel valued and integral to the team’s success. It also requires accountability for one’s work and adaptability when priorities shift. The best development teams thrive because they trust one another, share ownership of outcomes, and continuously learn and improve with each sprint.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Airgead Banking Ap - CS 210 - Project Reflection
+Airgead Banking App - CS 210 - Project Reflection
 
 This project involved developing an interactive banking application for Airgead Banking that demonstrates the power of compound interest. The program allows users to input their initial investment, monthly deposit, annual interest rate, and the number of years to see how their money grows over time. It generates two reports: one showing investment growth without additional monthly deposits and another showing investment growth with monthly deposits. The goal was to help users understand how compound interest affects long-term investments.
 
