@@ -1,0 +1,356 @@
+/*****************************************************************************************************************
+*  Title: Project Two (Airgead Banking App)
+*  Author: Jennifer Joseph
+*  Course: CS 210 - Programming Languages | Southern New Hampshire University
+*  Date: 10/25/2025
+*
+*  Objective:
+*  Help users understand how their investments grow over time through compound interest, both with and without
+*  additional monthly deposits. It allows users to input their investment details and generates yearly reports
+*  that clearly show the balance and interest earned for each scenario.
+*
+*  Functional Requirements:
+*  1. Prompt the user for initial investment amount, monthly deposit, annual interest rate, and number of years.
+*  2. Display the entered information before showing results.
+*  3. Calculate investment growth without monthly deposits.
+*  4. Calculate investment growth with monthly deposits. 
+*  5. Display yearly balances and earned interest for both scenarios.
+*  6. Pause the program after displaying inputs (“Press any key to continue…”).
+*  7. Allow the user to test different investment scenarios.
+*  8. Format monetary values to two decimal places.
+*****************************************************************************************************************/
+
+// I included several libraries to help with input validation, formatting output, power function, and cleaning string input
+#include <iostream>
+#include <limits>
+#include <iomanip>
+#include <cmath>
+#include <string>
+#include <cstdlib> 
+#include <algorithm>
+#include <cctype>
+using namespace std;
+
+// Function to clean and convert string input to double
+static double cleanInput(string prompt)
+{
+	// Variable to hold user input
+	string input;
+
+	while (true)
+	{
+		// Display prompt
+		cout << prompt;
+
+		// Read entire line to allow for dollar sign input
+		getline(cin, input);
+
+		// Remove all non-digit characters except for decimal point and negative sign
+		input.erase(remove_if(input.begin(), input.end(),
+			[](unsigned char c) { return !isdigit(c) && c != '.' && c != '-'; }),
+			input.end());
+
+		// Check if the cleaned input is not empty
+		if (!input.empty()) {
+			try {
+				
+				// Convert cleaned string to double
+				double value = stod(input);
+
+				// Reprompt if negative
+				if (value < 0) {
+					cout << "Please enter a non-negative number.\n\n";
+					continue;  
+				}
+				else if (value > 1000000000) {
+					cout << "Please enter a number less than 1,000,000,000.\n\n";
+					continue;  
+				}
+
+				// Return the valid double value
+				return value; 
+			}
+			// Handle invalid argument errors
+			catch (const invalid_argument&) {
+				cout << "Invalid input. Please enter a valid number.\n\n";
+			}
+			// Handle out of range errors
+			catch (const out_of_range&) {
+				cout << "That number is too large.\n\n";
+			}
+		}
+		else {
+			cout << "Invalid input. Please enter a number.\n\n";
+		}
+	}
+}
+
+// Function to clean and convert string input to int
+static int cleanYears(string prompt)
+{
+	// Variable to hold user input
+	string input;
+
+	// Loop until valid numeric input is received
+	while (true)
+	{
+		// Display prompt
+		cout << prompt;
+
+		// Read entire line to allow for invalid input
+		getline(cin, input);
+
+		// Remove all non-digit characters
+		input.erase(remove_if(input.begin(), input.end(),
+			[](unsigned char c) { return !isdigit(c); }),
+			input.end());
+
+		// Check if the cleaned input is not empty
+		if (!input.empty()) {
+			try {
+
+				// Convert cleaned string to int
+				int years = stoi(input);
+
+				// Enforce valid range for years
+				if (years <= 0) {
+					cout << "Please enter a value of at least 1 year.\n\n";
+					continue;
+				}
+				else if (years > 1000000000) { // Hard-coded upper limit (120 years)
+					cout << "Please enter a number less than 1,000,000,000.\n\n";
+					continue;
+				}
+
+				// Valid number of years
+				return years;
+			}
+			// Handle invalid argument errors
+			catch (const invalid_argument&) {
+				cout << "Invalid input. Please enter a valid whole number.\n\n";
+			}
+			// Handle out of range errors
+			catch (const out_of_range&) {
+				cout << "That number is too large.\n\n";
+			}
+		}
+		else {
+			cout << "Invalid input. Please enter a number.\n\n";
+		}
+	}
+}
+
+// Function to display entered information
+static void displayInfo(double initialAmount, double monthlyDeposit, double annualInterestRate, int years)
+{
+	// Display entered information
+	cout << "\n************** Data Input **************" << endl;
+
+	// Format monetary values to two decimal places
+	cout << "Initial Investment Amount: $" << fixed << setprecision(2) << initialAmount << endl;
+
+	// Format monetary values to two decimal places
+	cout << "Monthly Deposit: $" << fixed << setprecision(2) << monthlyDeposit << endl;
+
+	// Format monetary values to two decimal places
+	cout << "Annual Interest: %" << annualInterestRate << endl;
+
+	// Display number of years
+	cout << "Number of years: " << years << endl;
+}
+
+// Function to calculate and display growth without monthly deposits
+static void withoutMonthlyDeposits(double initialAmount, double annualInterestRate, int years)
+{
+
+	// Set indent for table formatting 
+	int indent = 4;
+	string spaces(indent, ' ');
+
+	cout << "\n";
+	cout << "Balance and Interest Without Additional Monthly Deposits"<< endl;
+	cout << "========================================================" << endl;
+
+	cout
+		<< left << setw(9) << "Year"
+		<< right << setw(17) << "Year End Balance"
+		<< right << setw(30) << "Year End Earned Interest"
+		<< endl;
+
+	cout << "--------------------------------------------------------" << endl;
+
+	// Keeps track of the balance that rolls over every year. 
+	double prevBalance = initialAmount;
+
+	double monthlyRate = annualInterestRate / 100.0 / 12.0;
+
+	// Loop through each year to calculate growth without monthly deposits
+	for (int i = 1; i <= years; i++)
+	{
+
+		double interestThisYear = 0.0;
+
+		// 12 monthly compounds, with no deposit
+		for (int j = 1; j <= 12; ++j) {
+			double interest = prevBalance * monthlyRate;
+			prevBalance += interest;
+			interestThisYear += interest;
+		}
+
+		// Calculate year end balance
+		double yearEndBalance = prevBalance;
+
+		// Calculate year earned interest
+		double yearEndEarnedInterest = interestThisYear;
+
+		// Display year end balance and year end earned interest
+		cout << " "
+			<< left << setw(8) << i
+			<< right << setw(11) << fixed << setprecision(2) << ("$" + to_string(yearEndBalance)).substr(0, ("$" + to_string(yearEndBalance)).find(".") + 3)
+			<< right << setw(24) << fixed << setprecision(2) << ("$" + to_string(yearEndEarnedInterest)).substr(0, ("$" + to_string(yearEndEarnedInterest)).find(".") + 3) << "\n"
+			<< endl;
+	}
+}
+
+// Function to calculate and display growth with monthly deposits
+static void withMonthlyDeposits(double initialAmount, double monthlyDeposit, double annualInterestRate, int years)
+{
+
+	// Set indent for table formatting 
+	int indent = 4;
+	string spaces(indent, ' ');
+
+	cout << "\n";
+	cout << "Balance and Interest With Additional Monthly Deposits" << endl;
+	cout << "=====================================================" << endl;
+
+	cout
+		<< left << setw(6) << "Year"
+		<< right << setw(18) << "Year End Balance"
+		<< right << setw(29) << "Year End Earned Interest"
+		<< endl;
+
+	cout << "-----------------------------------------------------" << endl;
+
+	// Keeps track of the balance that rolls over every year. 
+	double prevBalance = initialAmount;
+
+	// Monthly interest rate using floating point division
+	double monthlyInterestRate = annualInterestRate / 100.0 / 12.0;
+
+	// Loop through each year to calculate growth with monthly deposits
+	for (int i = 1; i <= years; i++)
+	{
+		// Initialize annual interest for the year
+		double annualInterest = 0.0;
+
+		// Loop through each month to calculate interest for the year
+		for (int j = 1; j <= 12; j++)
+		{
+			// Calculate monthly interest
+			prevBalance += monthlyDeposit;
+
+			// Interest for this month
+			double interestThisMonth = prevBalance * monthlyInterestRate;
+
+			// Update balance and track interest
+			prevBalance += interestThisMonth;
+
+			// Accumulate annual interest
+			annualInterest += interestThisMonth;
+		}
+
+		// End of the year
+		double yearEndBalance = prevBalance;
+
+		// Yearly interest earned
+		double yearEndEarnedInterest = annualInterest;
+
+		// Display year end balance and year end earned interest
+		cout << " "
+			<< left << setw(9) << i
+			<< right << setw(10) << fixed << setprecision(2) << ("$" + to_string(yearEndBalance)).substr(0, ("$" + to_string(yearEndBalance)).find(".") + 3)
+			<< right << setw(23) << fixed << setprecision(2) << ("$" + to_string(yearEndEarnedInterest)).substr(0, ("$" + to_string(yearEndEarnedInterest)).find(".") + 3) << "\n"
+			<< endl;
+	}
+}
+
+// Function to clean user input to continue program
+static char cleanContinue(string prompt)
+{
+	// Variable to hold user input
+	string input;
+
+	// Keep looping until valid input (y/n)
+	while (true) {
+
+		// Display prompt
+		cout << prompt;
+
+		// Read entire line
+		if (!getline(cin, input)) return 'n'; // handle EOF 
+
+		// Skip leading whitespace, convert to lowercase, and check if it's 'y' or 'n'
+		auto it = find_if(input.begin(), input.end(),
+			[](unsigned char c) { return !isspace(c); });
+
+		if (it != input.end()) {
+			char c = static_cast<char>(tolower(static_cast<unsigned char>(*it)));
+			if (c == 'y' || c == 'n') return c;
+		}
+
+		cout << "Invalid input. Please enter y or n: \n";
+	}
+}
+
+int main()
+{
+	cout << "****************************************" << endl;
+	cout << "*             Airgead Bank             *" << endl;
+	cout << "****************************************" << endl;
+
+	// Initialize exit key
+	char cont = 'y';
+
+	// Loop to allow the user to repeat until they choose to exit
+	while (cont == 'y')
+	{
+		cout << "************** Input Data **************" << endl;
+
+		// Initialize and prompt user for initial investment amount
+		double initialAmount = cleanInput("Initial Investment Amount: ");
+
+		// Initialize and prompt user for monthly deposit
+		double monthlyDeposit = cleanInput("Monthly Deposit: ");
+
+		// Initialize and prompt user for annual interest rate
+		double annualInterestRate = cleanInput("Annual Interest: ");
+
+		// Initialize and prompt user for number of years
+		int years = cleanYears("Number of years: ");
+
+		// Call function to display entered information
+		displayInfo(initialAmount, monthlyDeposit, annualInterestRate, years);
+
+		// Pause the program to allow user to review entered information
+		// This is Windows-specific but was used to meet the requirement.
+		system("pause");
+
+		// Call function to calculate and display growth without monthly deposits
+		withoutMonthlyDeposits(initialAmount, annualInterestRate, years);
+
+		// Call function to calculate and display growth with monthly deposits
+		withMonthlyDeposits(initialAmount, monthlyDeposit, annualInterestRate, years);
+
+		// Prompt user to repeat or exit
+		cont = cleanContinue("Would you like to continue? (y/n) ");
+
+	}
+
+	// End of program
+	cout << "\nThank you for choosing Airgead.\nGoodbye!" << endl;
+
+	return 0;
+
+}
+
