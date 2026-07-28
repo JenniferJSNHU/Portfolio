@@ -1,0 +1,6 @@
+﻿  MainCode.cpp
+C:\Users\jenni\OneDrive\Desktop\CS 330\CS330Content\Projects\8-2_Assignment\Source\MainCode.cpp(281,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jenni\OneDrive\Desktop\CS 330\CS330Content\Projects\8-2_Assignment\Source\MainCode.cpp(285,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jenni\OneDrive\Desktop\CS 330\CS330Content\Projects\8-2_Assignment\Source\MainCode.cpp(295,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jenni\OneDrive\Desktop\CS 330\CS330Content\Projects\8-2_Assignment\Source\MainCode.cpp(301,21): warning C4018: '<': signed/unsigned mismatch
+  8-2_Assignment.vcxproj -> C:\Users\jenni\OneDrive\Desktop\CS 330\CS330Content\Projects\8-2_Assignment\Debug\8-2_Assignment.exe
