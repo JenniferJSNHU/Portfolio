@@ -78,7 +78,17 @@ I approached this project by first identifying the client's requirements and the
 Computer scientists develop software solutions that help organizations manage information more efficiently and make better decisions. In this project, the dashboard allows Grazioso Salvare to quickly identify dogs that meet specific search-and-rescue training criteria without manually reviewing thousands of shelter records. By combining a database with an interactive dashboard, the application improves efficiency, reduces manual effort, and provides users with a more intuitive way to access and visualize data.
 
 ----------------------------------------------------------------------------------------------------------------------------
+3D Art Scene - CS 330 Project Reflection
+
+I approach designing software by first understanding the overall goal and then breaking it into smaller, manageable tasks. For this project, I planned the objects I needed, built each one individually, and gradually combined them into a complete 3D scene. Along the way, I improved my ability to work with object placement, scale, textures, lighting, and camera positioning. This process taught me that planning ahead and making small improvements throughout development leads to a better final product and is an approach I can apply to future projects.
+
+When developing programs, I focus on one feature at a time and test each change before moving on. Throughout this project, I used reusable functions, transformations, textures, materials, and lighting to build my scene while continuously refining each object. Iteration played a major role because I repeatedly adjusted sizes, positions, rotations, and lighting until everything looked the way I wanted. As the milestones progressed, I became more comfortable breaking larger problems into smaller pieces, which made debugging easier and helped me complete the project more efficiently.
+
+Computer science gives me the problem-solving and programming skills needed to create practical software and prepares me for future opportunities in the field. This course strengthened my understanding of computational graphics by giving me hands-on experience with modeling, transformations, rendering, textures, and lighting. These skills provide a strong foundation for future coursework involving graphics and visualization, while also preparing me for professional work in areas such as software development, simulations, game development, and other fields that use 3D graphics.
+
+----------------------------------------------------------------------------------------------------------------------------
 Weight Tracker App - CS 360 Project Reflection
+
 This project is a mobile weight tracking application created in Android Studio. The main goal was to give users a simple way to keep track of their weight without making the app harder to use than it needed to be. Users can create an account, log in, add weight entries, edit or delete previous entries, and view their weight history. They can also set a goal weight and enter a phone number for SMS notifications.
 
 The app needed several screens to support those features, including login and account creation, the main weight tracking screen, and settings for the goal weight and phone number. I tried to keep the interface simple and make the main actions easy to find. Users should not have to go through several screens just to add a new weight or correct an old entry. The layout and navigation were designed around what someone would actually be trying to do when using the app.
