@@ -1,4 +1,4 @@
-Sprint Review and Retrospective - CS 250 - Program Reflection
+Sprint Review and Retrospective - CS 250 - Project Reflection
 
 Understanding user needs begins with viewing the project from the customer’s perspective and focusing on the problems they need solved rather than simply the features they request. Creating user stories helps clarify those needs by presenting them in simple, goal-oriented language such as “As a user, I want to…”. This approach allows developers to translate general expectations into specific, actionable requirements during development. For example, in the SNHU Travel project, user stories guided the focus toward functionality that enhanced the user’s booking experience rather than merely completing technical tasks. By prioritizing and refining user stories throughout the sprints, developers can ensure that a program’s features align closely with real user goals.
 
@@ -52,7 +52,7 @@ I interpret user needs by breaking the requirements into specific rules that the
 I approach software design by starting with the requirements and identifying the main objects, data fields, and behaviors the program needs. In Project One, I separated the contact, task, and appointment features into individual classes and service classes so each part had a clear responsibility. This made the code easier to test, update, and maintain. I also try to keep the design simple, organized, and focused on meeting the requirements before adding anything extra.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Artemis Financial Secure Communications and Checksum Verification – CS 305 – CS 305 Project Two
+Artemis Financial Secure Communications and Checksum Verification – CS 305 Project Reflection
 
 Artemis Financial was a financial consulting company that creates individualized financial plans for customers, including savings, retirement, investments, and insurance. The company wanted to modernize its web application and improve software security. The main issue Artemis Financial wanted addressed was the need for secure communication and a file verification step using a checksum to confirm that transferred data had not been changed.
 
@@ -69,10 +69,24 @@ The resources, tools, and coding practices I used included Java Keytool, SHA-256
 For future employers, I could show the refactored application, the checksum verification endpoint, the HTTPS configuration, the self-signed certificate setup, and the Dependency-Check report. These examples demonstrate my ability to apply secure coding practices, configure secure communication, use vulnerability scanning tools, and document security testing results.
 
 ----------------------------------------------------------------------------------------------------------------------------
-Grazioso Salvare Dashboard - CS 340 Project Two 
+Grazioso Salvare Dashboard - CS 340 Project Reflection
 
 The CRUD Python module developed in Project One allowed me to separate the database operations from the dashboard interface, making the code more maintainable, readable, and adaptable. Rather than writing database queries throughout the dashboard, I reused the same module to handle all communication with MongoDB while the dashboard focused on displaying and filtering the data. This modular approach made the project easier to organize, simplified debugging, and would allow the same CRUD module to be reused in future applications that require access to the same database.
 
 I approached this project by first identifying the client's requirements and then implementing each feature one step at a time. I began by connecting the dashboard to the database, then developed the required filtering queries before adding the interactive table, charts, and map. This project differed from previous programming assignments because it required integrating multiple technologies into a complete client-server application. In the future, I would continue using this structured approach by developing modular components, testing each feature independently, and building the final application through incremental improvements.
 
 Computer scientists develop software solutions that help organizations manage information more efficiently and make better decisions. In this project, the dashboard allows Grazioso Salvare to quickly identify dogs that meet specific search-and-rescue training criteria without manually reviewing thousands of shelter records. By combining a database with an interactive dashboard, the application improves efficiency, reduces manual effort, and provides users with a more intuitive way to access and visualize data.
+
+----------------------------------------------------------------------------------------------------------------------------
+Weight Tracker App - CS 360 Project Reflection
+This project is a mobile weight tracking application created in Android Studio. The main goal was to give users a simple way to keep track of their weight without making the app harder to use than it needed to be. Users can create an account, log in, add weight entries, edit or delete previous entries, and view their weight history. They can also set a goal weight and enter a phone number for SMS notifications.
+
+The app needed several screens to support those features, including login and account creation, the main weight tracking screen, and settings for the goal weight and phone number. I tried to keep the interface simple and make the main actions easy to find. Users should not have to go through several screens just to add a new weight or correct an old entry. The layout and navigation were designed around what someone would actually be trying to do when using the app.
+
+When coding the app, I worked through one feature at a time instead of trying to build everything at once. I connected the layouts to the Java code, added the database, and then worked through the different functions such as adding, editing, and deleting entries. Breaking the work into smaller parts made troubleshooting easier because I usually knew which change caused a problem. I would use the same approach again on a larger project.
+
+Testing was also a bigger part of the project than I expected. I tested the app by running it and trying the features the way a user would, including entering data, changing it, deleting it, logging in, and testing the SMS permission. This was important because something could appear to work on one screen while causing a problem somewhere else. Testing showed me that an app is not finished just because the code runs without errors.
+
+One challenge was getting the different parts of the app to work together instead of treating each requirement as a separate feature. The database had to stay connected to what was being displayed on the screen, and the SMS feature also had to handle what happened if the user did not grant permission. I had to make changes as I tested instead of assuming the first version would work correctly.
+
+I think the database and weight history features are where I was most successful. The user can add new entries and then edit or delete them later, which made the app feel like an actual working application instead of just a group of screens. Completing that part of the project gave me a better understanding of how the UI, Java code, and stored data all work together.
